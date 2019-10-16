@@ -1,0 +1,17 @@
+/* TODO CSS */
+
+.selectGift{
+    margin: 5%;
+    padding: 10px;
+    border: 2px solid;
+    font-size: 22px;
+    width: 25%;
+    height: 60px;
+}
+
+.sledDisplay{
+ width: 25%;
+border: 1px solid;
+margin: 2%;
+min-height: 5em;
+}
