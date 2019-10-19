@@ -9,6 +9,7 @@
   <meta name="description" content="Web site created using create-react-app" />
   <script type="JavaScript" src="../src/index.js"></script>
   <link href="../src/css/bootstrap.min.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Mountains of Christmas' rel='stylesheet'>
   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
   <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> -->
   <title>Ho Ho Ho!</title>
@@ -18,22 +19,30 @@
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root">
     <!-- TODO -->
+    <div class="webHeading">It Is The Wonderful Time Of The Year</div>
     <div>
       <select class="selectGift dropdown" id="giftTypeId">
         <option style="font-size: 14px;" value="small">&#x1f381;Small Gift</option>
         <option style="font-size: 18px;" value="normal">&#x1f381;Normal Gift</option>
-        <option style="font-size: 22px;" value="big"ss>&#x1f381;Big Gift</option>
+        <option style="font-size: 22px;" value="big" ss>&#x1f381;Big Gift</option>
       </select>
       <button class="btn btn-secondary" id="prepareGiftId"> Prepare Gifts</button>
+
+      <div class="info-display">Info
+        <div id="infoMsgId"></div>
+      </div>
     </div>
     <div>
-    <div id="sledDisplayId" class="sledDisplay">  
+      <div id="sledDisplayId" class="sledDisplay"></div>
+      <button class="btn btn-secondary" id="deliverGiftId">Deliver Gifts</button>
+      <button class="btn btn-secondary" id="reqToDeliverId">Request to Deliver</button>
     </div>
-    <button class="btn btn-secondary" id="deliverGiftId">Deliver Gifts</button>
-    <button class="btn btn-secondary" id="reqToDeliverId">Request to Deliver</button>    
-  </div>
+    <div id="prepareGift" class="preparingGift" >
+      Preparing Gift.....
+    </div>
 
-  <!-- <div id="checkProgress">
+
+    <!-- <div id="checkProgress">
   <div id="progressBar"></div>
   </div> -->
     <!-- <div class="dropdown">

@@ -9,6 +9,10 @@ const axios = require('axios')
 // const SmallGift = require('./gifts.js')
 
 
+let totalGiftWeight
+let gifts
+$('#prepareGift').hide();
+
 class SmallGift {
     constructor() {
         this.type = 'small'
@@ -33,8 +37,77 @@ class BigGift {
     }
 }
 
-let totalGiftWeight
-let gifts
+class Dwarf{
+    getGift = (gift) => {
+        $('#prepareGift').show();
+        setTimeout(() => {
+            let sled = new Sled();
+            sled.addingGiftToSled(gift);
+            $('#prepareGift').hide();
+        }, gift.timeToPrepare * 1000)
+    }
+    prepareGift = (giftTypeId) => {
+        let giftObj;
+        let type = giftTypeId;
+        if (type === 'small') {
+            giftObj = new SmallGift();
+        } else if (type === 'normal') {
+            giftObj = new NormalGift();
+        } else if (type === 'big') {
+            giftObj = new BigGift();
+        }
+        totalGiftWeight += giftObj.weight
+        gifts.push(giftObj)
+        this.getGift(giftObj)
+    }
+}
+
+class Sled{
+    addingGiftToSled(gift){
+        let sledDisplayText = document.getElementById('sledDisplayId').textContent;
+        if (totalGiftWeight <= 12) {
+        document.getElementById('sledDisplayId').innerHTML = sledDisplayText + "\n <div> \n The gift weight  is " + gift.weight + " kg \n </div> \n"
+        }else{
+            alert('Gift weight exceeded')
+        }
+    }
+}
+
+class Reindeers{
+    deliverGift(){
+        axios({
+            url: 'http://localhost:8081',
+            method: 'post',
+            data: {
+                gifts: gifts
+            }
+        })
+            .then((response) => {
+                console.log("res", response);
+                if (response.status === 204) {
+                    $('#prepareGiftId').attr("disabled", false);
+                    initFn();
+                    alert("Gifts Delivered")
+                }
+            }, (error) => {
+                let sledDisplayText = document.getElementById('sledDisplayId').innerText
+                console.log("sleddis", sledDisplayText)
+                if (sledDisplayText !== "") {
+                    alert("I am Hungry!!!!")
+                    $('#deliverGiftId').attr("disabled", true);
+                    $('#reqToDeliverId').show();
+                    $('#prepareGiftId').attr("disabled", false);
+                    initFn();
+                } else {
+                    $('#prepareGiftId').attr("disabled", false);
+                    initFn();
+                    alert("Sled is empty!!! You need to add gifts!!!!")
+                    
+                }
+                console.log("error", error);
+            });
+    }
+}
 
 const initFn = () => {
     console.log("onloading")
@@ -43,62 +116,29 @@ const initFn = () => {
     document.getElementById('sledDisplayId').innerHTML = "";
 }
 
-
 $("#prepareGiftId").click(function () {
     let giftTypeId = $("#giftTypeId").val();
     console.log("giftTypeId", giftTypeId)
+    let dwarf = new Dwarf();
     if (totalGiftWeight >= 12) {
         alert('Gift weight exceeded')
     } else {
         if (giftTypeId === 'small') {
-            prepareGift(giftTypeId)
+            dwarf.prepareGift(giftTypeId)
         } else if (giftTypeId === 'normal') {
-            prepareGift(giftTypeId)
+            dwarf.prepareGift(giftTypeId)
         } else if (giftTypeId === 'big') {
-            prepareGift(giftTypeId)
+            dwarf.prepareGift(giftTypeId)
         }
     }
     console.log("gifts", gifts)
     console.log("weight", totalGiftWeight)
-
 });
 
 $("#deliverGiftId").click(function () {
     $('#prepareGiftId').attr("disabled", true);
-    axios({
-        url: 'http://localhost:8081',
-        method: 'post',
-        data: {
-            gifts: gifts
-        }
-    })
-        .then((response) => {
-            console.log("res", response);
-            if (response.status === 204) {
-                $('#prepareGiftId').attr("disabled", false);
-                initFn();
-                alert("Gifts Delivered")
-            }
-        }, (error) => {
-            // if (error.statusCode === 451) {
-            //      initFn();
-            //     alert("I am Hungry!!!!")
-            // } else if (error.statusCode === 400) {
-            //     alert("Sled is empty!!! You need to add gifts!!!!")
-            // }
-            let sledDisplayText = document.getElementById('sledDisplayId').innerText
-            console.log("sleddis", sledDisplayText)
-            if (sledDisplayText !== "") {
-                alert("I am Hungry!!!!")
-                // let enableReqToDelBtn = document.getElementById('reqToDeliverId');
-                $('#deliverGiftId').attr("disabled", true);
-                $('#reqToDeliverId').show();
-                initFn();
-            } else {
-                alert("Sled is empty!!! You need to add gifts!!!!")
-            }
-            console.log("error", error);
-        });
+    let reindeers = new Reindeers();
+    reindeers.deliverGift()
 })
 
 $("#reqToDeliverId").click(function () {
@@ -106,6 +146,15 @@ $("#reqToDeliverId").click(function () {
     $('#deliverGiftId').attr("disabled", false);
     alert('Reindeers are ready to deliver gifts now!!!!')
 });
+
+
+// const getGift = (gift) => {
+//     // progressBar(gift.timeToPrepare)
+//     setTimeout(() => {
+//         let sled = new Sled();
+//         sled.addingGiftToSled(gift);
+//     }, gift.timeToPrepare * 1000)
+// }
 
 // let initalVal
 // let progressBarWidth = $('#progressBar').css("width")
@@ -140,33 +189,23 @@ $("#reqToDeliverId").click(function () {
 //         // progressBarVal.innerHTML = "Preparing..."
 //     }
 // }
-const getGift = (gift) => {
-    // progressBar(gift.timeToPrepare)
-    setTimeout(() => {
-        let sledDisplayText = document.getElementById('sledDisplayId').textContent;
-        if (totalGiftWeight <= 12) {
-        document.getElementById('sledDisplayId').innerHTML = sledDisplayText + "\n <div> \n The gift weight  is " + gift.weight + " kg \n </div> \n"
-        }else{
-            alert('Gift weight exceeded')
-        }
-    }, gift.timeToPrepare * 1000)
-}
 
 
-const prepareGift = (giftTypeId) => {
-    let giftObj;
-    let type = giftTypeId;
-    if (type === 'small') {
-        giftObj = new SmallGift();
-    } else if (type === 'normal') {
-        giftObj = new NormalGift();
-    } else if (type === 'big') {
-        giftObj = new BigGift();
-    }
-    totalGiftWeight += giftObj.weight
-    gifts.push(giftObj);
-    getGift(giftObj)
-}
+
+// const prepareGift = (giftTypeId) => {
+//     let giftObj;
+//     let type = giftTypeId;
+//     if (type === 'small') {
+//         giftObj = new SmallGift();
+//     } else if (type === 'normal') {
+//         giftObj = new NormalGift();
+//     } else if (type === 'big') {
+//         giftObj = new BigGift();
+//     }
+//     totalGiftWeight += giftObj.weight
+//     gifts.push(giftObj);
+//     getGift(giftObj)
+// }
 
 
 $(document).ready(initFn);
