@@ -1,13 +1,12 @@
 /* TODO CSS */
 
-/* @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"); */
-
 body{
-    background-image: url('./images/img1.jpg');
+    background-image: url('./images/bg-img.jpg');
     background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    font-family: cursive;
 }
 .selectGift{
     margin: 5%;
@@ -15,74 +14,75 @@ body{
     border: 2px solid#6c757d;
     color: white;
     font-size: 18px;
-    width: ;
+    width: 15%;
     height: 50px;
     border-radius: 10px;
     display: inline;
     background-color: rgba(237, 55, 55, 0.7) !important;
 }
 
-/* select option:checked,
-select option:hover {
-    box-shadow: 0 0 10px 100px red inset;
-} */
-
-
+.infoHeader{
+    position: absolute;
+    top: 38%;
+    right: 22%;
+    font-family: cursive;
+    font-weight: 600;
+    font-size: 19px;
+}
 
 select:focus > option:checked { 
     background: rgba(255, 255, 255, 0.8);
     color: rgb(0, 0, 0);
 }
-/* 
-#giftTypeId:hover, #giftTypeId:focus, #giftTypeId:active, option:hover, option:focus, option:active, select:hover, select:focus, select:active{
-    background-color: rgba(237, 55, 55, 0.7)!important;
-}
 
-.selectGift option{
-    font-size: 20px;
-    border: 1px solid red;
-} */
 .sledDisplay{
- width: 18% !important;
-border: 1px solid;
-border-radius: 15px;
-padding: 20px;
-padding-left: 30px;
-padding-top: 20px;
-margin: 2%;
-margin-left: 5%;
-margin-top: 0px;
-min-height: 5em;
-max-height: 12em;
-/* color: white; */
-font-weight: 600;
-border: 2px solid#6c757d;
-color:rgba(12, 1, 1);
-display: inline-block;
-overflow-x: hidden;
-overflow-y: auto;
-background: rgba(237, 55, 55, 0.3);
-background-image: url('../css/images/sled-dwarf.png');
-background-size: 100px 90px;
-background-repeat: no-repeat;
-background-position: center;
+    width: 21% !important;
+    border: 1px solid;
+    border-radius: 15px;
+    padding: 20px;
+    padding-left: 30px;
+    padding-top: 20px;
+    margin: 2%;
+    margin-left: 5%;
+    margin-top: 0px;
+    min-height: 5em;
+    max-height: 12em;
+    font-weight: 600;
+    border: 2px solid#6c757d;
+    color:rgba(12, 1, 1);
+    display: inline-block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: rgba(237, 55, 55, 0.3);
+    background-image: url('../css/images/sled-dwarf.png');
+    background-size: 100px 90px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .info-display{
     float: right;
-    width: 22%;
-    border: 1px solid;
-    height: 199px;
+    width: 328px;
+    height: 370px;
     margin: 20%;
-    margin-top: 0px;
+    margin-top: 10px;
     margin-right: 10%;
     padding: 20px;
+    background-image: url('../css/images/info_bg.png');
+    background-size:295px 360px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
-/* ::-webkit-scrollbar {
-    width: 15px;
-} */
-/* .sledHeader{
-    display: inline-block;
-} */
+
+.infoMsg{
+    margin: 20%;
+    margin-top: 33%;
+    margin-left: 13%;
+    margin-right: 39%;
+    padding: 19px;
+    font-style: italic;
+    padding-left: 0px;
+    font-size: 18px;
+}
 
 #reqToDeliverId{
     display: none;
@@ -94,9 +94,6 @@ background-position: center;
 
 .webHeading{
     margin: 25px;
-     font-family:cursive;
-    /* font-size: 20px;  */
-    /* font-family: 'Mountains of Christmas'; */
     font-size: 30px;
     font-style: italic;
     font-weight: 600;
@@ -109,8 +106,8 @@ background-position: center;
     border-radius: 104%;
     display: inline-block;
     position: absolute;
-    top: 60%;
-    right: 10%;
+    top: 40%;
+    right: 35%;
     color: #6c757d;
     font-weight: 600;
     text-align: center;
@@ -121,17 +118,4 @@ background-position: center;
     background-size: 120px 90px;
     background-position: center;
     background-repeat: no-repeat;
-    /* display: none; */
 }
-/* #checkProgress{
-    width: 100%;
-    background-color: grey;
-}
-
-#progressBar{
-    width: 1%;
-    height: 30px;
-    background-color: indianred;
-    text-align: center;
-    color: white;
-} */
