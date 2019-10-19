@@ -9,6 +9,8 @@
   <meta name="description" content="Web site created using create-react-app" />
   <script type="JavaScript" src="../src/index.js"></script>
   <link href="../src/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+  <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> -->
   <title>Ho Ho Ho!</title>
 </head>
 
@@ -16,19 +18,24 @@
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root">
     <!-- TODO -->
+    <div>
+      <select class="selectGift dropdown" id="giftTypeId">
+        <option style="font-size: 14px;" value="small">&#x1f381;Small Gift</option>
+        <option style="font-size: 18px;" value="normal">&#x1f381;Normal Gift</option>
+        <option style="font-size: 22px;" value="big"ss>&#x1f381;Big Gift</option>
+      </select>
+      <button class="btn btn-secondary" id="prepareGiftId"> Prepare Gifts</button>
+    </div>
+    <div>
+    <div id="sledDisplayId" class="sledDisplay">  
+    </div>
+    <button class="btn btn-secondary" id="deliverGiftId">Deliver Gifts</button>
+    <button class="btn btn-secondary" id="reqToDeliverId">Request to Deliver</button>    
+  </div>
 
-    <select class="selectGift" id="giftTypeId">
-      <option value="small">Small Gift</option>
-      <option value="normal">Normal Gift</option>
-      <option value="big">Big Gift</option>
-    </select>
-
-    <button class="btn btn-primary" id="prepareGiftId"> Prepare Gifts</button>
-
-    <div  id="sledDisplayId" class="sledDisplay"></div>
-
-    <button class="btn btn-primary" id="deliverGiftId">Deliver Gifts</button>
-
+  <!-- <div id="checkProgress">
+  <div id="progressBar"></div>
+  </div> -->
     <!-- <div class="dropdown">
       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="selectButton" >Select Gifts</button>
       <ul class="dropdown-menu" id="giftType">

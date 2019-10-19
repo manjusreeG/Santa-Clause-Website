@@ -1,17 +1,70 @@
 /* TODO CSS */
 
+/* @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"); */
+
+body{
+    background-image: url('./images/img1.jpg');
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
 .selectGift{
     margin: 5%;
     padding: 10px;
-    border: 2px solid;
-    font-size: 22px;
-    width: 25%;
-    height: 60px;
+    border: 2px solid#6c757d;
+    color: white;
+    font-size: 18px;
+    width: 20%;
+    height: 50px;
+    border-radius: 10px;
+    display: inline;
+    background-color: rgba(237, 55, 55, 0.7) !important;
 }
 
+/* select option:checked,
+select option:hover {
+    box-shadow: 0 0 10px 100px red inset;
+} */
+
+
+
+select:focus > option:checked { 
+    background: rgba(255, 255, 255, 0.8);
+    color: rgb(0, 0, 0);
+}
+/* 
+#giftTypeId:hover, #giftTypeId:focus, #giftTypeId:active, option:hover, option:focus, option:active, select:hover, select:focus, select:active{
+    background-color: rgba(237, 55, 55, 0.7)!important;
+}
+
+.selectGift option{
+    font-size: 20px;
+    border: 1px solid red;
+} */
 .sledDisplay{
- width: 25%;
+ width: 10%;
 border: 1px solid;
 margin: 2%;
-min-height: 5em;
+min-height: 2em;
+display: inline-block;
 }
+
+#reqToDeliverId{
+    display: none;
+}
+#deliverGiftId{
+    position: fixed;
+}
+/* #checkProgress{
+    width: 100%;
+    background-color: grey;
+}
+
+#progressBar{
+    width: 1%;
+    height: 30px;
+    background-color: indianred;
+    text-align: center;
+    color: white;
+} */
